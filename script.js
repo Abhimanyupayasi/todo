@@ -52,12 +52,12 @@ function addItem(text, timestamp, addToLS = true) {
 
     let formattedText = '';
 for (let i = 0; i < text.length; i++) {
-    if (i > 0 && i % 20 === 0) {
+    if (i > 0 && i % 20 === 0 && text[i] === ' ') {
         formattedText += '<br>';
+    } else {
+        formattedText += text[i];
     }
-    formattedText += text[i];
 }
-
 todoText.innerHTML = formattedText;
 todoText.classList.add('todotext');
 item.appendChild(todoText);
