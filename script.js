@@ -50,17 +50,28 @@ function addItem(text, timestamp, addToLS = true) {
 
     const todoText = document.createElement('p');
 
+    let words = text.split(' ');
     let formattedText = '';
-for (let i = 0; i < text.length; i++) {
-    if (i > 0 && i % 20 === 0 && text[i] === ' ') {
-        formattedText += '<br>';
+
+for (let i = 0; i < words.length; i++) {
+    if (words[i].length > 20) {
+        for (let j = 0; j < words[i].length; j++) {
+            if (j > 0 && j % 20 === 0) {
+                formattedText += '<br>';
+            }
+            formattedText += words[i][j];
+        }
     } else {
-        formattedText += text[i];
+        formattedText += words[i];
+    }
+    if (i < words.length - 1) {
+        formattedText += ' ';
     }
 }
-todoText.innerHTML = formattedText;
-todoText.classList.add('todotext');
-item.appendChild(todoText);
+    
+    todoText.innerHTML = formattedText;
+    todoText.classList.add('todotext');
+    item.appendChild(todoText);
 
     const remove = document.createElement('button');
     remove.innerText = 'Remove';
