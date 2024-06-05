@@ -48,10 +48,19 @@ function addItem(text, timestamp, addToLS = true) {
 
 
 
-    const todoText = document.createElement('span');
-    todoText.innerText = text;
-    todoText.classList.add('todotext');
-    item.appendChild(todoText);
+    const todoText = document.createElement('p');
+
+    let formattedText = '';
+for (let i = 0; i < text.length; i++) {
+    if (i > 0 && i % 20 === 0) {
+        formattedText += '<br>';
+    }
+    formattedText += text[i];
+}
+
+todoText.innerHTML = formattedText;
+todoText.classList.add('todotext');
+item.appendChild(todoText);
 
     const remove = document.createElement('button');
     remove.innerText = 'Remove';
